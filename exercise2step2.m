@@ -45,7 +45,7 @@ contour(xm,ym,psi_2,c)
 est_infa =[];
 est_infb =[];
 xm_crit = del/2;
-i_crit = (xm_crit-xmin)*(nx-1)/(xmax-xmin)+1
+i_crit = (xm_crit-xmin)*(nx-1)/(xmax-xmin)+1;
 
 infb_reflect = zeros([nx ny]);
 
