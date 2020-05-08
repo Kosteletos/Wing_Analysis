@@ -21,4 +21,4 @@ for i = 1:nx
     end
 end
 c = -0.4:0.2:1.2;
- contour(xm,ym,psi,c) 
+contour(xm,ym,psi,c) 

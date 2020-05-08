@@ -40,20 +40,23 @@ for i = 1:nx
     end
 end
 c = -0.15:0.05:0.15;
+figure('Name','Analytical Influence Coefficient a');
 contour(xm,ym,infa,c) 
-figure(2)
+
+figure('Name', 'Analytical Influence Coefficient b');
 contour(xm,ym,infb,c) 
-figure(3)
+
+figure('Name', 'Analytical Streamfunction');
 contour(xm,ym,psi_ana,c) 
-figure(4)
+
+figure('Name', 'Estimated Streamfunction');
 contour(xm,ym,psi_est,c) 
-figure(5)
+
+figure('Name', 'Estimated Influence Coefficient a');
 contour(xm,ym,infa_est,c)
-figure(6)
+
+figure('Name', 'Estimated Influence Coefficient b');
 contour(xm,ym,infb_est,c)
 
-infa-infa_est
-
-%%
 
 

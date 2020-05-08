@@ -1,5 +1,6 @@
 function [infa, infb] = refpaninf(del,X,Yin) 
-  
+% Calculates the influence coefficients at at point (x,y) due to a vortex
+% sheet between (0,0) and (del, 0)
  if abs(Yin) < 1e-8
     Y = 1e-8;
  else
