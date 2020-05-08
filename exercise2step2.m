@@ -39,6 +39,7 @@ for i = 1:nx
         
     end
 end
+
 c = -0.15:0.05:0.15;
 figure('Name','Analytical Influence Coefficient a');
 contour(xm,ym,infa,c) 
