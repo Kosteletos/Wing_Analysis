@@ -26,10 +26,12 @@ psi_ana = gamma_a*infa + gamma_b*infb;
 
 for k = 1:nv
     xc = (del/nv)*(k-0.5);
-    gamma = gamma_b*xc/nv +gamma_a*(del/nv-xc/nv); 
-    psi_est = psi_est + psipv(xc,yc,gamma,xm,ym); % discrete approximation for psi of vortex sheet
-    infa_est = infa_est + psipv(xc,yc,gamma_a*(del/nv-xc/nv),xm,ym)/gamma_a; % setting gamma_b = 0 so fa=psi/gamma_a
-    infb_est = infb_est + psipv(xc,yc,gamma_b*xc/nv,xm,ym)/gamma_b ; % setting gamma_a = 0 so fa=psi/gamma_b
+    Gamma_k_a = gamma_a*(del/nv-xc/nv);
+    Gamma_k_b = gamma_b*xc/nv;
+    Gamma_k = Gamma_k_a + Gamma_k_b; 
+    psi_est = psi_est + psipv(xc,yc,Gamma_k,xm,ym); % discrete approximation for psi of vortex sheet
+    infa_est = infa_est + psipv(xc,yc,Gamma_k_a,xm,ym)/gamma_a; % setting gamma_b = 0 so fa=psi/gamma_a
+    infb_est = infb_est + psipv(xc,yc,Gamma_k_b,xm,ym)/gamma_b ; % setting gamma_a = 0 so fa=psi/gamma_b
 end
 
 
