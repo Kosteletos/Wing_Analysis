@@ -38,21 +38,45 @@ end
 c = -0.15:0.05:0.15;
 figure('Name','Analytical Influence Coefficient a');
 contour(xm,ym,infa,c) 
+xlabel('x')
+ylabel('y')
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
+title('Analytical Influence Coefficient a')
+print -deps2c ex2_a_infa.eps
 
 figure('Name', 'Analytical Influence Coefficient b');
 contour(xm,ym,infb,c) 
-
-figure('Name', 'Analytical Streamfunction');
-contour(xm,ym,psi_ana,c) 
-
-figure('Name', 'Estimated Streamfunction');
-contour(xm,ym,psi_est,c) 
-
+xlabel('x')
+ylabel('y')
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
+title('Analytical Influence Coefficient b')
+print -deps2c ex2_a_infb.eps
+ 
 figure('Name', 'Estimated Influence Coefficient a');
 contour(xm,ym,infa_est,c)
+xlabel('x')
+ylabel('y')
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
+title('Estimated Influence Coefficient a')
+print -deps2c ex2_E_infa.eps
 
 figure('Name', 'Estimated Influence Coefficient b');
 contour(xm,ym,infb_est,c)
+xlabel('x')
+ylabel('y')
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
+title('Estimated Influence Coefficient b')
+print -deps2c ex2_E_infb.eps
+
+
+%figure('Name', 'Analytical Streamfunction');
+%contour(xm,ym,psi_ana,c) 
+
+%figure('Name', 'Estimated Streamfunction');
+%contour(xm,ym,psi_est,c)
+
+
+
 
 
 

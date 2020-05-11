@@ -34,3 +34,8 @@ contour(xm,ym,psi,c)
 hold on
 plot(xs,ys)
 hold off 
+xlabel('x')
+ylabel('y')
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
+title('Streamlines around cylinder')
+print -deps2c ex4_streamlines.eps
