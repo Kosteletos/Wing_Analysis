@@ -3,8 +3,6 @@ function lhsmat = build_lhs(xs,ys)
 %   Detailed explanation goes here
 
 
-
-
 np = length(xs) - 1;
 psip = zeros(np,np+1); 
 % calculates intermediate psi matrix
