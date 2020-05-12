@@ -12,8 +12,8 @@ psip = zeros(np,np+1);
 % corresponding cell
 
 %%%NEW%%% But doing nothing at the moment
-xs_shift = circshift(xs,-1); % Shifted xs == x(i+1)
-ys_shift = circshift(ys,-1); % Shifted ys == y(i+1)
+%xs_shift = circshift(xs,-1); % Shifted xs == x(i+1)
+%ys_shift = circshift(ys,-1); % Shifted ys == y(i+1)
 %%%NEW%%%
 
 [infa, infb] =  panelinf(xs(1),ys(1),xs(2),ys(2),xs(1:np),ys(1:np));
@@ -31,7 +31,7 @@ for j = 2:np
 end
 
 %%%NEW%%% but doing nothing at the moment
-[infa_test, infb_test] = panelinf(xs,ys,xs_shift,ys_shift,xs,ys);
+%[infa_test, infb_test] = panelinf(xs,ys,xs_shift,ys_shift,xs,ys);
 %%%%%%%%%
 
 % Build A (lhsmat) from psi_p adn a shifted Psi_p
