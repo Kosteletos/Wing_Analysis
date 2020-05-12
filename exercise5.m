@@ -10,9 +10,11 @@ xs = cos(theta);
 ys = sin(theta);
 alpha = pi/18;
 
+
 A = build_lhs(xs,ys);
 b_0 = build_rhs(xs,ys,0);
 b_a = build_rhs(xs,ys,alpha);
+
 
 gam_0 = A\b_0;
 gam_a = A\b_a;
@@ -60,6 +62,6 @@ ylabel('velocity')
 axis([0 2 -2.5 2.5])
 set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
 title('Surface velocity on cylinder')
-print -deps2c ex5_both.eps
+%print -deps2c ex5_both.eps
 
 
