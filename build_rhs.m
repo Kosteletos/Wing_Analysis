@@ -9,5 +9,4 @@ rhsvec = zeros(np+1,1);
 %using these dimensions to leave last two elements = 0
 rhsvec(1:np-1) = psifs(1:np-1) - psifs_shift(1:np-1); 
 
-
 end
