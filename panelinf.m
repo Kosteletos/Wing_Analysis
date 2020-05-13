@@ -1,4 +1,5 @@
 function [infa, infb] = panelinf(xa,ya,xb,yb,x,y) 
+
 % calculates influence coefficients infa, infb at all x,y for panel
 % between (xa,ya) and (xb,yb)
 
