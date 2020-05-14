@@ -1,3 +1,5 @@
+clear
+close all
 
 Re_L = 1;
 x = linspace(0,1,101); % dimentionless x/L

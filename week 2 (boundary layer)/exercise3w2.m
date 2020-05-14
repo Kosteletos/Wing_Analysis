@@ -1,3 +1,6 @@
+clear
+close all
+
 % run for 
 %ue_grad = -0.25
 %Re_L = 10^3,10^4,10^5
