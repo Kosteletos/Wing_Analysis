@@ -5,7 +5,7 @@ close all
 %ue_grad = -0.25
 %Re_L = 10^3,10^4,10^5
 
-Re_L = 8.96*10^5; %9.0 is the value of ReL where transition supplants seperation
+Re_L = 8.95*10^5; %9.0 is the value of ReL where transition supplants seperation
 Re_theta = 0;
 x = linspace(0,1,101); % dimentionless x/L
 ue_grad = -0.25;
