@@ -23,11 +23,13 @@ theta9 = 0.023*x.*(Re.*x).^(-1/6);
 
 plot(x,theta,'-' ,'color','b','linewidth',1.5);
 xlabel('x/L')
-ylabel('theta/L')
+ylabel('\theta/L')
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
+title('Zero pressure-gradient, turbulent boundary layer \theta/L ')
 hold on 
 plot(x,theta7,'-' ,'color','g','linewidth',1.5)
-
 plot(x,theta9,'-' ,'color','r','linewidth',1.5)
 hold off
 
-legend('theta','1/7th law','1/9th law','location','northwest')
+legend('\theta','1/7th power law','1/9th power law','location','northwest')
+print -deps2c ex4w2.eps
