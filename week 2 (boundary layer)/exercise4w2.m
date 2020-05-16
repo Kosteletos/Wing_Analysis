@@ -22,6 +22,8 @@ theta7 = 0.037*x.*(Re.*x).^(-1/5);
 theta9 = 0.023*x.*(Re.*x).^(-1/6);
 
 plot(x,theta,'-' ,'color','b','linewidth',1.5);
+xlabel('x/L')
+ylabel('theta/L')
 hold on 
 plot(x,theta7,'-' ,'color','g','linewidth',1.5)
 

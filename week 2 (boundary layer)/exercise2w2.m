@@ -8,7 +8,7 @@ close all
 Re_L = 5*10^6;
 Re_theta = 0;
 x = linspace(0,1,101); % dimentionless x/L
-ue_grad = -0.1;
+ue_grad = 0.1;
 ue = linspace(1,1+ue_grad,101); % dimentionless ue/U
 Int = 0;
 theta = zeros(1,101); % theta/L

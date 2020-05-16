@@ -5,7 +5,7 @@ close all
 %ue_grad = -0.25
 %Re_L = 10^3,10^4,10^5
 
-Re_L = 8.95*10^5; %9.0 is the value of ReL where transition supplants seperation
+Re_L = 9.0*10^5; %9.0 is the value of ReL where transition supplants separation
 Re_theta = 0;
 x = linspace(0,1,101); % dimentionless x/L
 ue_grad = -0.25;
@@ -15,7 +15,7 @@ theta = zeros(1,101); % theta/L
 theta_b = zeros(1,101); %blasius theta/L
 
 int = 0; %location of natural transition
-ils = 0; %location of laminar seperation
+ils = 0; %location of laminar separation
 
  n = 101; % defines number of panels
  laminar = true; % initializes boundary layer state flag 
@@ -45,6 +45,6 @@ if int ~= 0
     ' with Re_theta ' num2str(Re_theta)])
 end 
 if ils ~= 0
-    disp(['Seperation at ' num2str(x(ils)) ...
+    disp(['separation at ' num2str(x(ils)) ...
     ' with Re_theta ' num2str(Re_theta)])
 end 
