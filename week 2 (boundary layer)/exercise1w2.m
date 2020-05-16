@@ -23,6 +23,6 @@ hold off
 legend('Thwaites','Blasius','location','northwest')
 xlabel('x/L')
 ylabel('theta/L')
-set(gca,'Fontn','Times','FontSize',15,'linewidth',1)
-title('zero pressure gradient laminar boundary layer momentum thickness')
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
+title('Zero pressure-gradient, laminar boundary layer momentum thickness')
 print -deps2c ex1w2.eps
