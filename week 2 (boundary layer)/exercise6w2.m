@@ -5,9 +5,9 @@ close all
 %ue_grad = -0.25
 %Re_L = 10^3,10^4,10^5
 global Re ue0 duedx;
-Re = 10^6;
+Re = 10^7;
 ue0 = 1;
-duedx = -0.25;
+duedx = 0;
 
 n = 101; % defines number of panels
 Int = 0; %variable that stores integral value
