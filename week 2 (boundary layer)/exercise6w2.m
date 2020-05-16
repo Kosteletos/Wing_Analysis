@@ -5,9 +5,9 @@ close all
 %ue_grad = -0.25
 %Re_L = 10^3,10^4,10^5
 global Re ue0 duedx;
-Re = 10^7;
+Re = 10^5;
 ue0 = 1;
-duedx = 0;
+duedx = -0.25;
 
 n = 101; % defines number of panels
 Int = 0; %variable that stores integral value
@@ -74,7 +74,7 @@ ue0 = ue0 + i/n*duedx;
    Re_theta(i) = Re * ue(i) * theta(i);
    if ils > 0 && itr ==0 && He(i)>1.58 %test for reattachment after laminar seperation
        itr = i;
-   elseif itr>0 && He(i)<1.46 % test for turbulent seperation
+   elseif  He(i)<1.46 % test for turbulent seperation
        its = i;
    end
  end
