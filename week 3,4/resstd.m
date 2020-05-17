@@ -35,6 +35,7 @@ A = build_lhs ( xs, ys );
 b = build_rhs ( xs, ys, alpha );
 
 gams = inv(A) * b;
+
 xs2 = xs;
 cp2 = 1 - gams.^2;
 
