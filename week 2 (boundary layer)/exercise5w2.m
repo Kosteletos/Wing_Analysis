@@ -32,13 +32,12 @@ xlabel('x/L')
 set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
 title('\theta/L ,\delta_e/L vs x/L  at duedx = -0.5, ReL = 10^7')
 
-print -deps2c ex5w2.eps
-%{
+%print -deps2c ex5w2.eps
 figure('Name', 'He against x');
 plot(x,He,'-' ,'color','b','linewidth',1.5);
 hold on 
 plot(x,He_sep,'-','color','r','linewidth',1.5);
 
 hold off
-%}
+
 

@@ -7,7 +7,7 @@ Int = 0; %variable that stores integral value
 
 ue = sqrt(1-cp); % dimentionless ue/U
 duedxvec = zeros(1,n);
-duedxvec(1) = ue(1)/x(1);
+duedxvec(1) = (ue(1))/x(1);
 duedxvec(n) = (ue(n)-ue(n-1))/(x(n)-x(n-1));
 for i=2:n-1
     duedxvec(i) = (-ue(i-1)+ue(i+1))/(x(i+1)-x(i-1));
@@ -34,11 +34,14 @@ i = 1;
 
  while laminar && i < n 
    if i == 1
-       Int = ueintbit(0,1,x(1),ue(1)); % not sure what ue should be at the stagnation point
+       Int = ueintbit(0,1,x(1),ue(1)); % not sure what ue should be at the stagnation point, setting to ue(0) to 1 sorts out test_bl_solv but ue seems to start at 0?
    else
        Int = Int + ueintbit(x(i-1),ue(i-1),x(i),ue(i));
    end
    theta(i) = sqrt( (0.45/Re)*(ue(i))^-6 * Int );
+   if isa(theta,'complex')
+       'help'
+   end
    Re_theta(i) = Re * ue(i) * theta(i);
    
    m(i) = -Re*theta(i)^2*duedxvec(i);
@@ -99,6 +102,7 @@ i = 1;
  delstar(i) = H(i)*theta(i);
  
  end
+
  
 
 

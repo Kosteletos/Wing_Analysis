@@ -5,10 +5,10 @@ close all
 %ue_grad = -0.25
 %Re_L = 10^3,10^4,10^5
 
-Re_L = 9.0*10^5; %9.0 is the value of ReL where transition supplants separation
+Re_L =10^6; %9.0 is the value of ReL where transition supplants separation
 Re_theta = 0;
 x = linspace(0,1,101); % dimentionless x/L
-ue_grad = -0.25;
+ue_grad = -1;
 ue = linspace(1,1+ue_grad,101); % dimentionless ue/U
 Int = 0; %variable that stores integral value
 theta = zeros(1,101); % theta/L

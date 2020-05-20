@@ -32,6 +32,10 @@ nphr = 5*np;
 A = build_lhs ( xs, ys );
 Am1 = inv(A);
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%DELETE  THIS%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+transition_upper = zeros(1,length(alpha));
+transition_lower = zeros(1,length(alpha));
+
 %  Loop over alpha values
 for nalpha = 1:length(alpha)
 
@@ -116,6 +120,8 @@ for nalpha = 1:length(alpha)
     is = ipstag + 1 - iunt;
     upperbl = sprintf ( '%s\n%s%5.3f', upperbl, ... 
                         '    Natural transition at x = ', xs(is) );
+   transition_upper(nalpha) = xs(is);
+     
   end
   if iuls~=0
     is = ipstag + 1 - iuls;
@@ -140,6 +146,7 @@ for nalpha = 1:length(alpha)
     is = ipstag + ilnt;
     lowerbl = sprintf ( '%s\n%s%5.3f', lowerbl, ... 
                         '    Natural transition at x = ', xs(is) );
+    transition_lower(nalpha) = xs(is);
   end
   if ills~=0
     is = ipstag + ills;

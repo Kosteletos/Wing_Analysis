@@ -5,9 +5,9 @@ close all
 %ue_grad = -0.25
 %Re_L = 10^3,10^4,10^5
 global Re ue0 duedx;
-Re = 10^7;
+Re = 10^5;
 ue0 = 1;
-duedx = 0;
+duedx = 0.3;
 
 n = 101; % defines number of panels
 Int = 0; %variable that stores integral value
@@ -108,7 +108,7 @@ end
 
 %PLOTTING 
 
-figure('Name','theta against x Re =10^6 dp/dx = 0');
+figure('Name','theta against x Re =10^4 dp/dx = -0.25');
 plot(x,theta)
 xlabel('x/L')
 ylabel('theta/L')
@@ -116,7 +116,7 @@ set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
 title('theta/L vs x/L at ReL = 10^6')
 %print -deps2c ex6w2_tx_10^6_0.eps
 
-figure('Name','He against x Re =10^6 dp/dx = 0');
+figure('Name','He against x Re =10^4 dp/dx = -0.25');
 plot(x,He)
 xlabel('x/L')
 ylabel('He')
