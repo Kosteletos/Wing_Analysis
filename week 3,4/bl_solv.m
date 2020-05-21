@@ -30,18 +30,16 @@ its = 0; %turbulent separation i value
 
 %LAMINAR LOOP
 laminar = true; % initializes boundary layer state flag 
-i = 1;
+i = 0;
 
  while laminar && i < n 
-   if i == 1
-       Int = ueintbit(0,1,x(1),ue(1)); % not sure what ue should be at the stagnation point, setting to ue(0) to 1 sorts out test_bl_solv but ue seems to start at 0?
+   i = i + 1;
+    if i == 1
+       Int = ueintbit(0,0,x(1),ue(1)); % not sure what ue should be at the stagnation point, setting to ue(0) to 1 sorts out test_bl_solv but ue seems to start at 0?
    else
        Int = Int + ueintbit(x(i-1),ue(i-1),x(i),ue(i));
    end
    theta(i) = sqrt( (0.45/Re)*(ue(i))^-6 * Int );
-   if isa(theta,'complex')
-       'help'
-   end
    Re_theta(i) = Re * ue(i) * theta(i);
    
    m(i) = -Re*theta(i)^2*duedxvec(i);
@@ -57,40 +55,37 @@ i = 1;
        ils = i;
        He(i) = 1.51509;
    end
-   i = i + 1;
+   
  end
- i=i-1;
+ 
  %filling in the next entrys after exiting the laminar loop
  %TURBULENT LOOP
  deltae = He.*theta;
- ue0 = ue(i);
- duedx = duedxvec(i);
+
  
  while its == 0 && i < n 
+   ue0 = ue(i);
+   duedx = duedxvec(i);
    thick0 = [theta(i);deltae(i)];
    i = i + 1;
    [delx thickhist] = ode45(@thickdash,[0,x(i)-x(i-1)],thick0);
-   ue0 = ue(i);
-   duedx = duedxvec(i);
+
    theta(i) = thickhist(end,1);
    deltae(i) = thickhist(end,2);
    
-   
    He(i) = deltae(i)/theta(i);
-   if He(i)  < 1.46
-        H(i) = 2.803;
-   else
-        H(i) = (11*He(i)+15)/(48*He(i)-59);
-   end
-   delstar(i) = H(i)*theta(i);
+   
+   H(i) = (11*He(i)+15)/(48*He(i)-59);
    
    Re_theta(i) = Re * ue(i) * theta(i);
    if ils > 0 && itr ==0 && He(i)>1.58 %test for reattachment after laminar seperation
        itr = i;
    elseif  He(i)<1.46 % test for turbulent seperation
        its = i;
+       H(i) = 2.803;
    end
-     
+    
+   delstar(i) = H(i)*theta(i);
  end
  
  He (i:n) = He(i);
