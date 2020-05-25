@@ -87,13 +87,18 @@ camber_x = zeros(1,n+1);
 camber_y = zeros(1,n+1);
 
 for i = 0:n
-   camber_x(i+1)=i/n;
-   
-   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-   
-   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-   
-   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+   try
+       camber_x(i+1)=i/n;
+       upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+       lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+       camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+   catch exception
+       if i~=0
+           camber_y(i+1)=camber_y(i);
+       else
+           camber_y(1) = ys_u(le);
+       end
+   end
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -158,19 +163,23 @@ uicontrol('style','text','Fontsize',10, ...
                     ys_u = ys(1:le); %Upper surface y
                     ys_l = ys(le+1:end); %Lower surface y
 
-                    n = 100;
                     delta_x = 0.0002;
                     camber_x = zeros(1,n+1);
                     camber_y = zeros(1,n+1);
 
                     for i = 0:n
-                       camber_x(i+1)=i/n;
-
-                       upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-                       lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-                       camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                       try
+                           camber_x(i+1)=i/n;
+                           upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                           lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                           camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                       catch exception
+                           if i~=0
+                               camber_y(i+1)=camber_y(i);
+                           else
+                               camber_y(1) = ys_u(le);
+                           end
+                       end
                     end
                     plot(xs,ys,'k', ...
                          [1;x],[0;y],'.k', ...
@@ -197,19 +206,23 @@ uicontrol('style','text','Fontsize',10, ...
             ys_u = ys(1:le); %Upper surface y
             ys_l = ys(le+1:end); %Lower surface y
 
-            n = 100;
             delta_x = 0.0002;
             camber_x = zeros(1,n+1);
             camber_y = zeros(1,n+1);
 
             for i = 0:n
-               camber_x(i+1)=i/n;
-
-               upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-               lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-               camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+               try
+                   camber_x(i+1)=i/n;
+                   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+               catch exception
+                   if i~=0
+                       camber_y(i+1)=camber_y(i);
+                   else
+                       camber_y(1) = ys_u(le);
+                   end
+               end
             end
                 
                 plot(xs,ys,'k', ...
@@ -245,19 +258,23 @@ uicontrol('style','text','Fontsize',10, ...
                 ys_u = ys(1:le); %Upper surface y
                 ys_l = ys(le+1:end); %Lower surface y
 
-                n = 100;
                 delta_x = 0.0002;
                 camber_x = zeros(1,n+1);
                 camber_y = zeros(1,n+1);
 
                 for i = 0:n
-                   camber_x(i+1)=i/n;
-
-                   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-                   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-                   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   try
+                       camber_x(i+1)=i/n;
+                       upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                       lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                       camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   catch exception
+                       if i~=0
+                           camber_y(i+1)=camber_y(i);
+                       else
+                           camber_y(1) = ys_u(le);
+                       end
+                   end
                 end
                 plot(xs,ys,'k', ...
                      [1;x],[0;y],'.k','markersize',13)
@@ -293,20 +310,24 @@ uicontrol('style','text','Fontsize',10, ...
             xs_l = xs(le+1:end); %Lower surface x
             ys_u = ys(1:le); %Upper surface y
             ys_l = ys(le+1:end); %Lower surface y
-
-            n = 100;
+            
             delta_x = 0.0002;
             camber_x = zeros(1,n+1);
             camber_y = zeros(1,n+1);
 
             for i = 0:n
-               camber_x(i+1)=i/n;
-
-               upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-               lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-               camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+               try
+                   camber_x(i+1)=i/n;
+                   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+               catch exception
+                   if i~=0
+                       camber_y(i+1)=camber_y(i);
+                   else
+                       camber_y(1) = ys_u(le);
+                   end
+               end
             end
             plot(xs,ys,'k', ...
                  [1;x],[0;y],'.k', ...
@@ -419,19 +440,23 @@ uicontrol('style','text','Fontsize',10, ...
                 ys_u = ys(1:le); %Upper surface y
                 ys_l = ys(le+1:end); %Lower surface y
 
-                n = 100;
                 delta_x = 0.0002;
                 camber_x = zeros(1,n+1);
                 camber_y = zeros(1,n+1);
 
                 for i = 0:n
-                   camber_x(i+1)=i/n;
-
-                   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-                   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-                   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   try
+                       camber_x(i+1)=i/n;
+                       upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                       lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                       camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   catch exception
+                       if i~=0
+                           camber_y(i+1)=camber_y(i);
+                       else
+                           camber_y(1) = ys_u(le);
+                       end
+                   end
                 end
                 plot(xs,ys,'k', ...
                      [1;x],[0;y],'.k', ...
@@ -466,20 +491,24 @@ uicontrol('style','text','Fontsize',10, ...
         xs_l = xs(le+1:end); %Lower surface x
         ys_u = ys(1:le); %Upper surface y
         ys_l = ys(le+1:end); %Lower surface y
-
-        n = 100;
+        
         delta_x = 0.0002;
         camber_x = zeros(1,n+1);
         camber_y = zeros(1,n+1);
 
         for i = 0:n
-           camber_x(i+1)=i/n;
-
-           upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-           lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-           camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+           try
+               camber_x(i+1)=i/n;
+               upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+               lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+               camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+           catch exception
+               if i~=0
+                   camber_y(i+1)=camber_y(i);
+               else
+                   camber_y(1) = ys_u(le);
+               end
+           end
         end
         plot(xs,ys,'k', ...
              [1;x],[0;y],'.k', ...
@@ -540,20 +569,24 @@ uicontrol('style','text','Fontsize',10, ...
                     xs_l = xs(le+1:end); %Lower surface x
                     ys_u = ys(1:le); %Upper surface y
                     ys_l = ys(le+1:end); %Lower surface y
-
-                    n = 100;
+                    
                     delta_x = 0.0002;
                     camber_x = zeros(1,n+1);
                     camber_y = zeros(1,n+1);
 
                     for i = 0:n
-                       camber_x(i+1)=i/n;
-
-                       upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-                       lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-                       camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                       try
+                           camber_x(i+1)=i/n;
+                           upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                           lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                           camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                       catch exception
+                           if i~=0
+                               camber_y(i+1)=camber_y(i);
+                           else
+                               camber_y(1) = ys_u(le);
+                           end
+                       end
                     end
                     plot(xs,ys,'k', ...
                          [1;x],[0;y],'.k', ...
@@ -572,20 +605,24 @@ uicontrol('style','text','Fontsize',10, ...
                     xs_l = xs(le+1:end); %Lower surface x
                     ys_u = ys(1:le); %Upper surface y
                     ys_l = ys(le+1:end); %Lower surface y
-
-                    n = 100;
+                    
                     delta_x = 0.0002;
                     camber_x = zeros(1,n+1);
                     camber_y = zeros(1,n+1);
 
                     for i = 0:n
-                       camber_x(i+1)=i/n;
-
-                       upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-                       lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-                       camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                       try
+                           camber_x(i+1)=i/n;
+                           upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                           lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                           camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                       catch exception
+                           if i~=0
+                               camber_y(i+1)=camber_y(i);
+                           else
+                               camber_y(1) = ys_u(le);
+                           end
+                       end
                     end
                     plot(xs,ys,'k', ...
                          [1;x],[0;y],'.k', ...
@@ -612,20 +649,24 @@ uicontrol('style','text','Fontsize',10, ...
                 xs_l = xs(le+1:end); %Lower surface x
                 ys_u = ys(1:le); %Upper surface y
                 ys_l = ys(le+1:end); %Lower surface y
-
-                n = 100;
+                
                 delta_x = 0.0002;
                 camber_x = zeros(1,n+1);
                 camber_y = zeros(1,n+1);
 
                 for i = 0:n
-                   camber_x(i+1)=i/n;
-
-                   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-                   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-                   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   try
+                       camber_x(i+1)=i/n;
+                       upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                       lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                       camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   catch exception
+                       if i~=0
+                           camber_y(i+1)=camber_y(i);
+                       else
+                           camber_y(1) = ys_u(le);
+                       end
+                   end
                 end
                 plot(xs,ys,'k', ...
                      [1;x],[0;y],'.k', ...
@@ -646,19 +687,23 @@ uicontrol('style','text','Fontsize',10, ...
                 ys_u = ys(1:le); %Upper surface y
                 ys_l = ys(le+1:end); %Lower surface y
 
-                n = 100;
                 delta_x = 0.0002;
                 camber_x = zeros(1,n+1);
                 camber_y = zeros(1,n+1);
 
                 for i = 0:n
-                   camber_x(i+1)=i/n;
-
-                   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-                   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-                   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   try
+                       camber_x(i+1)=i/n;
+                       upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                       lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                       camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   catch exception
+                       if i~=0
+                           camber_y(i+1)=camber_y(i);
+                       else
+                           camber_y(1) = ys_u(le);
+                       end
+                   end
                 end
                 plot(xs,ys,'k', ...
                      [1;x],[0;y],'.k', ...
@@ -692,19 +737,23 @@ uicontrol('style','text','Fontsize',10, ...
                 ys_u = ys(1:le); %Upper surface y
                 ys_l = ys(le+1:end); %Lower surface y
 
-                n = 100;
                 delta_x = 0.0002;
                 camber_x = zeros(1,n+1);
                 camber_y = zeros(1,n+1);
 
                 for i = 0:n
-                   camber_x(i+1)=i/n;
-
-                   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-                   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-                   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   try
+                       camber_x(i+1)=i/n;
+                       upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                       lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                       camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   catch exception
+                       if i~=0
+                           camber_y(i+1)=camber_y(i);
+                       else
+                           camber_y(1) = ys_u(le);
+                       end
+                   end
                 end
                 plot(xs,ys,'k', ...
                      [1;x],[0;y],'.k', ...
@@ -724,19 +773,23 @@ uicontrol('style','text','Fontsize',10, ...
                 ys_u = ys(1:le); %Upper surface y
                 ys_l = ys(le+1:end); %Lower surface y
 
-                n = 100;
                 delta_x = 0.0002;
                 camber_x = zeros(1,n+1);
                 camber_y = zeros(1,n+1);
 
                 for i = 0:n
-                   camber_x(i+1)=i/n;
-
-                   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-                   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-                   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   try
+                       camber_x(i+1)=i/n;
+                       upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                       lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                       camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+                   catch exception
+                       if i~=0
+                           camber_y(i+1)=camber_y(i);
+                       else
+                           camber_y(1) = ys_u(le);
+                       end
+                   end
                 end
                 plot(xs,ys,'k', ...
                      [1;x],[0;y],'.k', ...
@@ -773,20 +826,24 @@ uicontrol('style','text','Fontsize',10, ...
             xs_l = xs(le+1:end); %Lower surface x
             ys_u = ys(1:le); %Upper surface y
             ys_l = ys(le+1:end); %Lower surface y
-
-            n = 100;
+            
             delta_x = 0.0002;
             camber_x = zeros(1,n+1);
             camber_y = zeros(1,n+1);
 
             for i = 0:n
-               camber_x(i+1)=i/n;
-
-               upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-               lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-               camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+               try
+                   camber_x(i+1)=i/n;
+                   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+               catch exception
+                   if i~=0
+                       camber_y(i+1)=camber_y(i);
+                   else
+                       camber_y(1) = ys_u(le);
+                   end
+               end
             end
             plot(xs,ys,'k', ...
                  [1;x],[0;y],'.k', ...
@@ -806,19 +863,23 @@ uicontrol('style','text','Fontsize',10, ...
             ys_u = ys(1:le); %Upper surface y
             ys_l = ys(le+1:end); %Lower surface y
 
-            n = 100;
             delta_x = 0.0002;
             camber_x = zeros(1,n+1);
             camber_y = zeros(1,n+1);
 
             for i = 0:n
-               camber_x(i+1)=i/n;
-
-               upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-               lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-               camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+               try
+                   camber_x(i+1)=i/n;
+                   upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+                   lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+                   camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+               catch exception
+                   if i~=0
+                       camber_y(i+1)=camber_y(i);
+                   else
+                       camber_y(1) = ys_u(le);
+                   end
+               end
             end
             plot(xs,ys,'k', ...
                  [1;x],[0;y],'.k', ...
@@ -912,20 +973,24 @@ uicontrol('style','text','Fontsize',10, ...
         xs_l = xs(le+1:end); %Lower surface x
         ys_u = ys(1:le); %Upper surface y
         ys_l = ys(le+1:end); %Lower surface y
-
-        n = 100;
+        
         delta_x = 0.0002;
         camber_x = zeros(1,n+1);
         camber_y = zeros(1,n+1);
 
         for i = 0:n
-           camber_x(i+1)=i/n;
-
-           upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-           lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-           camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+           try
+               camber_x(i+1)=i/n;
+               upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+               lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+               camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+           catch exception
+               if i~=0
+                   camber_y(i+1)=camber_y(i);
+               else
+                   camber_y(1) = ys_u(le);
+               end
+           end
         end
         plot(xs,ys,'k', ...
              [1;x],[0;y],'.k', ...
@@ -945,20 +1010,24 @@ uicontrol('style','text','Fontsize',10, ...
         xs_l = xs(le+1:end); %Lower surface x
         ys_u = ys(1:le); %Upper surface y
         ys_l = ys(le+1:end); %Lower surface y
-
-        n = 100;
+        
         delta_x = 0.0002;
         camber_x = zeros(1,n+1);
         camber_y = zeros(1,n+1);
 
         for i = 0:n
-           camber_x(i+1)=i/n;
-
-           upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
-
-           lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
-
-           camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+           try
+               camber_x(i+1)=i/n;
+               upper_index = find(xs_u<(i/n+delta_x) & xs_u>(i/n-delta_x));
+               lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
+               camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+           catch exception
+               if i~=0
+                   camber_y(i+1)=camber_y(i);
+               else
+                   camber_y(1) = ys_u(le);
+               end
+           end
         end
         plot(xs,ys,'k', ...
              [1;x],[0;y],'.k', ...

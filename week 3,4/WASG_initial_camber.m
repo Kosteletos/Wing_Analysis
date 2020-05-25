@@ -93,7 +93,11 @@ for i = 0:n
        lower_index = find(xs_l<(i/n+delta_x) & xs_l>(i/n-delta_x));
        camber_y(i+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
    catch exception
-       camber_y(i+1)=camber_y(i)
+       if i~=0
+           camber_y(i+1)=camber_y(i);
+       else
+           camber_y(1) = ys_u(le);
+       end
    end
 end
 
