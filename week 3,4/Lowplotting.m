@@ -2,7 +2,7 @@
 close
 clear all
 prev = 'low6f311';
-new = 'low6f312';
+new = 'low7';
 mid1 = 'low6f3';
 mid2 = 'low6f313';
 mid3 = 'low9f308';
