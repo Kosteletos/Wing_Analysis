@@ -1,0 +1,4 @@
+Section identifier              : l30703c-1
+Number of panels                : 1400
+Reynolds number                 : 0.5e6
+Range of incidences (degrees)   : 0:0.25:10
