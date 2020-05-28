@@ -46,16 +46,16 @@ for nalpha = 1:length(alpha)
 %    solve for surface vortex sheet strength
   gam = Am1 * b;
   
-%%%%%%%%%%%%%%%% Streamline plotting function: comment out to run fast
-streamfunction_plotting(gam,xs,ys,alfrad);
-%%%%%%%%%%%%%%%%
-
 %    calculate cp distribution and overall circulation
   [cp circ] = potential_op ( xs, ys, gam );
 
 %    locate stagnation point and calculate stagnation panel length
   [ipstag fracstag] = find_stag(gam);
   dsstag = sqrt((xs(ipstag+1)-xs(ipstag))^2 + (ys(ipstag+1)-ys(ipstag))^2);
+  
+%%%%%%%%%%%%%%%% Streamline plotting function: comment out to run fast
+streamfunction_plotting_rotated(gam,xs,ys,alfrad, ipstag);
+%%%%%%%%%%%%%%%%
 
 %    upper surface boundary layer calc
 

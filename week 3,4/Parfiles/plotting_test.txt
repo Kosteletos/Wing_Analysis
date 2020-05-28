@@ -1,4 +1,4 @@
-Section identifier              : naca0012
+Section identifier              : l30703c-13-3
 Number of panels                : 800
 Reynolds number                 : 0.5e6
-Range of incidences (degrees)   : 4
+Range of incidences (degrees)   : 0:1:10
