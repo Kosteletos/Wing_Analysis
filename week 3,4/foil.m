@@ -45,6 +45,10 @@ for nalpha = 1:length(alpha)
 
 %    solve for surface vortex sheet strength
   gam = Am1 * b;
+  
+%%%%%%%%%%%%%%%% Streamline plotting function: comment out to run fast
+streamfunction_plotting(gam,xs,ys,alfrad);
+%%%%%%%%%%%%%%%%
 
 %    calculate cp distribution and overall circulation
   [cp circ] = potential_op ( xs, ys, gam );
