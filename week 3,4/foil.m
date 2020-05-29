@@ -54,7 +54,9 @@ for nalpha = 1:length(alpha)
   dsstag = sqrt((xs(ipstag+1)-xs(ipstag))^2 + (ys(ipstag+1)-ys(ipstag))^2);
   
 %%%%%%%%%%%%%%%% Streamline plotting function: comment out to run fast
-streamfunction_plotting_rotated(gam,xs,ys,alfrad, ipstag);
+%if alpha(nalpha) == 9
+%   streamfunction_plotting_rotated(gam,xs,ys,alfrad, ipstag);
+%end
 %%%%%%%%%%%%%%%%
 
 %    upper surface boundary layer calc

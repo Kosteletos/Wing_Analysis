@@ -1,7 +1,7 @@
 close all
 clear all
 
-data_list = {'h3','h4'};    % what to plot
+data_list = {'l30703c-13-3','h607'};    % what to plot
 
 
 data_len = numel(data_list);
