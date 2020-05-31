@@ -32,15 +32,17 @@ function streamfunction_plotting(gamma, xs, ys, alpha,ipstag)
     stag = [xs(ipstag),ys(ipstag)]; 
     psi_stag = interp2(ym,xm,psi,stag(2),stag(1));
     
-    c = -5:0.04:5;
+    c = -0.4:0.08:0.3;
     figure('Name','streamlines');
-    contour(xm,ym,psi,c,'b')
-    hold on
     contour(xm,ym,psi,[psi_stag,psi_stag],'r','linewidth',1)
+
+    hold on
+    contour(xm,ym,psi,c,'b')
     fill(xs,ys,'k');
     hold off 
-    xlabel('x')
-    ylabel('y')
+    axis equal
+    set(gca,'XTick',[], 'YTick', []) %Remove axes numbers
+    set(gca,'visible','off') %remove axes ticks
     set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     title(strcat('Streamlines at alpha=',num2str(alpha*360/(2*pi))));
     

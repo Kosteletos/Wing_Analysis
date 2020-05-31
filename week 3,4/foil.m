@@ -55,7 +55,7 @@ for nalpha = 1:length(alpha)
   
 %%%%%%%%%%%%%%%% Streamline plotting function: comment out to run fast
 %if alpha(nalpha) == 9
-%   streamfunction_plotting_rotated(gam,xs,ys,alfrad, ipstag);
+%streamfunction_plotting_rotated(gam,xs,ys,alfrad, ipstag);
 %end
 %%%%%%%%%%%%%%%%
 
