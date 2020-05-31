@@ -1,6 +1,7 @@
 close all
 clear all
 
+
 %Low Reynolds
 %data_list = {'l3','l307','l306','l308','l309'};    % what to plot
 %data_list = {'naca4412','l3','l2','l5','low2'};    % what to plot
@@ -11,6 +12,8 @@ clear all
 %data_list = {'h607','h608','h609','h6'};
 data_list = {'h607-1','h607-2','h607-3','h607-4'};
 
+
+%'ni8-2','l30703c-13-3'
 data_len = numel(data_list);
 figure('Name','Geometry')
 hold on

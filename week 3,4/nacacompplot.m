@@ -79,7 +79,7 @@ figure('Name','Cl vs \alpha 0012')
 plot(alpha,cl,'-' ,'color','r','linewidth',1.5)
 hold on
 plot(alpha2,cl2,'-' ,'color','g','linewidth',1.5)
-plot(alpha3,cl3,'-' ,'color','b','linewidth',1.5)
+plot(alpha3,cl4,'-' ,'color','b','linewidth',1.5)
 I = imread('naca0012cla.jpg'); 
 h = image([-24 32],[2.8 -1.8],I);
 uistack(h,'bottom')
