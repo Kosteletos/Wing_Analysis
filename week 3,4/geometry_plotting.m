@@ -1,9 +1,9 @@
 close all
 clear all
 
-data_list = {'ni8','ni7-8','ni8-2','ni8-3','ni9'};    % what to plot
+data_list = {'l30703c-13','l30703c-13-2','l30703c-13-3'};    % what to plot
 
-
+%'ni8-2','l30703c-13-3'
 data_len = numel(data_list);
 figure('Name','Geometry')
 hold on
