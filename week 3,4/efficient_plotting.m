@@ -4,7 +4,7 @@ clear all
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-data_list = {'l1','l2','l3','l4','l5'};    % what to plot
+data_list = {'l307','l30703'};    % what to plot
 angle_list = {'0','7'};                      % Angles to plot cp at
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -23,6 +23,10 @@ for i = 1:data_len
    plot(data.alpha,data.lovdswp,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
 legend(data_list,'location','southeast')
+xlabel('\alpha')
+ylabel('L/D')
+xlim([-inf,10])
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
 hold off
 
 %Cd against Cl
@@ -33,6 +37,9 @@ for i = 1:data_len
    plot(data.clswp,data.cdswp,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
 legend(data_list,'location','northwest')
+xlabel('c_d')
+ylabel('c_l')
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
 hold off
 
 %Cl against alpha 
@@ -43,6 +50,10 @@ for i = 1:data_len
    plot(data.alpha,data.clswp,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
 legend(data_list,'location','northwest')
+xlabel('\alpha')
+ylabel('c_l')
+xlim([-inf,10])
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
 hold off
 
 %Cd against alpha
@@ -53,6 +64,10 @@ for i = 1:data_len
    plot(data.alpha,data.cdswp,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
 legend(data_list,'location','northwest')
+xlabel('\alpha')
+ylabel('c_d')
+xlim([-inf,10])
+set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
 hold off
 
 % Cp Plots
@@ -62,9 +77,12 @@ for i = 1:angle_len
     hold on
     for j = 1:data_len
         data = load(strcat('Data/',data_list{j},'_',angle_list{i}));
-        plot(data.xs,data.cp,'-' ,'color',colour_array{mod(j,8)},'linewidth',1.1)
+        plot(-1*data.xs,data.cp,'-' ,'color',colour_array{mod(j,8)},'linewidth',1.1)
     end
     legend(data_list,'location','southeast')
+    xlabel('x/c')
+    ylabel('-c_p')
+    set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     hold off
 end
 
@@ -76,7 +94,10 @@ for i = 1:data_len
     plot(data.alpha,data.transition_upper,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
     legend(data_list,'location','southeast')
-    axis([0 12 0 1])
+    axis([0 10 0 1])
+    xlabel('\alpha')
+    ylabel('x/c')
+    set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     hold off
 
 figure('Name','transition_lower vs alpha')
@@ -86,7 +107,10 @@ for i = 1:data_len
     plot(data.alpha,data.transition_lower,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
     legend(data_list,'location','southeast')
-    axis([0 12 0 1])
+    axis([0 10 0 1])
+    xlabel('\alpha')
+    ylabel('x/c')
+    set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     hold off
     
 figure('Name','separation_upper vs alpha')
@@ -96,7 +120,10 @@ for i = 1:data_len
     plot(data.alpha,data.separation_upper,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
     legend(data_list,'location','southeast')
-    axis([0 12 0.95 1])
+    axis([0 10 0.95 1])
+    xlabel('\alpha')
+    ylabel('x/c')
+    set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     hold off
     
 figure('Name','separation_lower vs alpha')
@@ -106,7 +133,10 @@ for i = 1:data_len
     plot(data.alpha,data.separation_lower,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
     legend(data_list,'location','southeast')
-    axis([0 12 0 1])
+    axis([0 10 0 1])
+    xlabel('\alpha')
+    ylabel('x/c')
+    set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     hold off
     
 figure('Name','lam_separation_upper vs alpha')
@@ -116,7 +146,10 @@ for i = 1:data_len
     plot(data.alpha,data.lam_separation_upper,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
     legend(data_list,'location','southeast')
-    axis([0 12 0 1])
+    axis([0 10 0 1])
+    xlabel('\alpha')
+    ylabel('x/c')
+    set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     hold off
     
 figure('Name','lam_separation_lower vs alpha')
@@ -126,7 +159,10 @@ for i = 1:data_len
     plot(data.alpha,data.lam_separation_lower,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
     legend(data_list,'location','southeast')
-    axis([0 12 0 1])
+    axis([0 10 0.7 1])
+    xlabel('\alpha')
+    ylabel('x/c')
+    set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     hold off
 
     %turbulent reattachment
@@ -138,6 +174,9 @@ for i = 1:data_len
     plot(data.alpha,data.turb_reattachment_upper,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
     legend(data_list,'location','southeast')
+    xlabel('\alpha')
+    ylabel('x/c')
+    set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     hold off
     
 figure('Name','turb_reattachment_lower vs alpha')
@@ -147,5 +186,8 @@ for i = 1:data_len
     plot(data.alpha,data.turb_reattachment_lower,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
     legend(data_list,'location','southeast')
+    xlabel('\alpha')
+    ylabel('x/c')
+    set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     hold off
     %}

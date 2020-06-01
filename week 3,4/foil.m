@@ -134,7 +134,7 @@ for nalpha = 1:length(alpha)
     is = ipstag + 1 - iunt;
     upperbl = sprintf ( '%s\n%s%5.3f', upperbl, ... 
                         '    Natural transition at x = ', xs(is) );
-  
+    transition_upper(nalpha) = xs(is);
      
   end
   if iuls~=0
