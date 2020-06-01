@@ -1,7 +1,7 @@
 close all
 clear all
 
-data_list = {'l30703c-13','l30703c-13-2','l30703c-13-3'};    % what to plot
+data_list = {'l30703c-3','l30703','l30703c-5','l30703c-10','l30703c-13'};    % what to plot
 
 %'ni8-2','l30703c-13-3'
 data_len = numel(data_list);

@@ -4,8 +4,8 @@ clear all
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-data_list = {'l307','l30703'};    % what to plot
-angle_list = {'0','7'};                      % Angles to plot cp at
+data_list = {'l30703c-14','l30703c-13','l30703c-5','l30703c-10','l30703c-13-3'};    % what to plot
+angle_list = {'0','5','7'};                      % Angles to plot cp at
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %'ni8-2','l30703c-13-3',
@@ -77,16 +77,18 @@ for i = 1:angle_len
     hold on
     for j = 1:data_len
         data = load(strcat('Data/',data_list{j},'_',angle_list{i}));
-        plot(-1*data.xs,data.cp,'-' ,'color',colour_array{mod(j,8)},'linewidth',1.1)
+        plot(1*data.xs,data.cp,'-' ,'color',colour_array{mod(j,8)},'linewidth',1.1)
     end
-    legend(data_list,'location','southeast')
+    legend(data_list,'location','northeast')
     xlabel('x/c')
-    ylabel('-c_p')
+    ylabel('c_p')
+    set(gca, 'YDir','reverse')
     set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
     hold off
 end
 
-% transistion and separation locations
+%%%%% transistion and separation locations %%%%%
+
 figure('Name','transition_upper vs alpha')
 hold on
 for i = 1:data_len
@@ -159,7 +161,7 @@ for i = 1:data_len
     plot(data.alpha,data.lam_separation_lower,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
 end
     legend(data_list,'location','southeast')
-    axis([0 10 0.7 1])
+    axis([0 10 0 1])
     xlabel('\alpha')
     ylabel('x/c')
     set(gca,'Fontn','Times','FontSize',10,'linewidth',1)
