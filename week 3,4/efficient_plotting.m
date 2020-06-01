@@ -4,7 +4,7 @@ clear all
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-data_list = {'l30703c-13','l30703c-13-2','l30703c-13-3'};    % what to plot
+data_list = {'l1','l2','l3','l4','l5'};    % what to plot
 angle_list = {'0','7'};                      % Angles to plot cp at
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -68,4 +68,84 @@ for i = 1:angle_len
     hold off
 end
 
+% transistion and separation locations
+figure('Name','transition_upper vs alpha')
+hold on
+for i = 1:data_len
+    data = load(strcat('Data/',data_list{i}));
+    plot(data.alpha,data.transition_upper,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
+end
+    legend(data_list,'location','southeast')
+    axis([0 12 0 1])
+    hold off
 
+figure('Name','transition_lower vs alpha')
+hold on
+for i = 1:data_len
+    data = load(strcat('Data/',data_list{i}));
+    plot(data.alpha,data.transition_lower,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
+end
+    legend(data_list,'location','southeast')
+    axis([0 12 0 1])
+    hold off
+    
+figure('Name','separation_upper vs alpha')
+hold on
+for i = 1:data_len
+    data = load(strcat('Data/',data_list{i}));
+    plot(data.alpha,data.separation_upper,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
+end
+    legend(data_list,'location','southeast')
+    axis([0 12 0.95 1])
+    hold off
+    
+figure('Name','separation_lower vs alpha')
+hold on
+for i = 1:data_len
+    data = load(strcat('Data/',data_list{i}));
+    plot(data.alpha,data.separation_lower,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
+end
+    legend(data_list,'location','southeast')
+    axis([0 12 0 1])
+    hold off
+    
+figure('Name','lam_separation_upper vs alpha')
+hold on
+for i = 1:data_len
+    data = load(strcat('Data/',data_list{i}));
+    plot(data.alpha,data.lam_separation_upper,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
+end
+    legend(data_list,'location','southeast')
+    axis([0 12 0 1])
+    hold off
+    
+figure('Name','lam_separation_lower vs alpha')
+hold on
+for i = 1:data_len
+    data = load(strcat('Data/',data_list{i}));
+    plot(data.alpha,data.lam_separation_lower,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
+end
+    legend(data_list,'location','southeast')
+    axis([0 12 0 1])
+    hold off
+
+    %turbulent reattachment
+%{
+figure('Name','turb_reattachment_upper vs alpha')
+hold on
+for i = 1:data_len
+    data = load(strcat('Data/',data_list{i}));
+    plot(data.alpha,data.turb_reattachment_upper,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
+end
+    legend(data_list,'location','southeast')
+    hold off
+    
+figure('Name','turb_reattachment_lower vs alpha')
+hold on
+for i = 1:data_len
+    data = load(strcat('Data/',data_list{i}));
+    plot(data.alpha,data.turb_reattachment_lower,'-' ,'color',colour_array{mod(i,8)},'linewidth',1.5)
+end
+    legend(data_list,'location','southeast')
+    hold off
+    %}

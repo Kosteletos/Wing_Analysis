@@ -34,6 +34,14 @@ Am1 = inv(A);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%DELETE  THIS%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 separation_upper = zeros(1,length(alpha));
+separation_lower = zeros(1,length(alpha));
+transition_upper = zeros(1,length(alpha));
+transition_lower = zeros(1,length(alpha));
+lam_separation_upper = zeros(1,length(alpha));
+lam_separation_lower = zeros(1,length(alpha));
+turb_reattachment_upper = zeros(1,length(alpha));
+turb_reattachment_lower = zeros(1,length(alpha));
+
 
 
 %  Loop over alpha values
@@ -54,9 +62,9 @@ for nalpha = 1:length(alpha)
   dsstag = sqrt((xs(ipstag+1)-xs(ipstag))^2 + (ys(ipstag+1)-ys(ipstag))^2);
   
 %%%%%%%%%%%%%%%% Streamline plotting function: comment out to run fast
-if alpha(nalpha) == 7
-   streamfunction_plotting_rotated(gam,xs,ys,alfrad, ipstag);
-end
+%if alpha(nalpha) == 7
+%   streamfunction_plotting_rotated(gam,xs,ys,alfrad, ipstag);
+%end
 %%%%%%%%%%%%%%%%
 
 %    upper surface boundary layer calc
@@ -133,10 +141,12 @@ end
     is = ipstag + 1 - iuls;
     upperbl = sprintf ( '%s\n%s%5.3f', upperbl, ... 
                         '    Laminar separation at x = ', xs(is) );
+    lam_separation_upper(nalpha) = xs(is);
     if iutr~=0
       is = ipstag + 1 - iutr;
       upperbl = sprintf ( '%s\n%s%5.3f', upperbl, ... 
                           '    Turbulent reattachment at x = ', xs(is) );
+    turb_reattachment_upper(nalpha) = xs(is);
     end
   end
   if iuts~=0
@@ -153,22 +163,25 @@ end
     is = ipstag + ilnt;
     lowerbl = sprintf ( '%s\n%s%5.3f', lowerbl, ... 
                         '    Natural transition at x = ', xs(is) );
-    
+    transition_lower(nalpha) = xs(is);
   end
   if ills~=0
     is = ipstag + ills;
     lowerbl = sprintf ( '%s\n%s%5.3f', lowerbl, ... 
                         '    Laminar separation at x = ', xs(is) );
+    lam_separation_lower(nalpha) = xs(is);
     if iltr~=0
       is = ipstag + iltr;
       lowerbl = sprintf ( '%s\n%s%5.3f', lowerbl, ... 
                           '    Turbulent reattachment at x = ', xs(is) );
+    turb_reattachment_lower(nalpha) = xs(is);
     end
   end
   if ilts~=0
     is = ipstag + ilts;
     lowerbl = sprintf ( '%s\n%s%5.3f', lowerbl, ... 
                         '    Turbulent separation at x = ', xs(is) );
+    separation_lower(nalpha) = xs(is);
   end
   lowerbl = sprintf ( '%s\n', lowerbl );
   disp(lowerbl)
@@ -184,4 +197,4 @@ end
 %  save alpha sweep data in summary file
 
 fname = ['Data/' caseref '.mat'];
-save ( fname, 'xs', 'ys', 'alpha', 'clswp', 'cdswp', 'lovdswp','separation_upper')
+save ( fname, 'xs', 'ys', 'alpha', 'clswp', 'cdswp', 'lovdswp','separation_upper','separation_lower','transition_upper','transition_lower','lam_separation_upper','lam_separation_lower','turb_reattachment_upper','turb_reattachment_lower')
