@@ -48,7 +48,7 @@ i = 0;
    delstar(i) = H(i)*theta(i);
    if log(Re_theta(i)) >= 18.4*He(i) - 21.74
        laminar = false;
-       disp([x(i) Re_theta(i)/1000])
+       disp([x(i) Re_theta(i)/1000]);
        int = i;
    elseif m(i) >= 0.09
        laminar = false;

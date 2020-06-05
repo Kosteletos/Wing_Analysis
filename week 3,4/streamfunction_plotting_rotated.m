@@ -32,7 +32,7 @@ function streamfunction_plotting(gamma, xs, ys, alpha,ipstag)
     stag = [xs(ipstag),ys(ipstag)]; 
     psi_stag = interp2(ym,xm,psi,stag(2),stag(1));
     
-    c = -0.4:0.08:0.3;
+    c = -0.37:0.08:0.20;
     figure('Name','streamlines');
     contour(xm,ym,psi,[psi_stag,psi_stag],'r','linewidth',1)
 

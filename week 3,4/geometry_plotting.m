@@ -10,7 +10,12 @@ clear all
 %High Reynolds
 %data_list = {'naca4412','h1','h3','h4','h5','h6'};
 %data_list = {'h607','h608','h609','h6'};
-data_list = {'h607-1','h607-2','h607-3','h607-4'};
+%data_list = {'newidea','ni2','ni3','ni4','ni8-2'};
+%data_list = {'newidea','ni8-2','ni5','ni6','ni8-5'};
+
+%Validation
+data_list = {'naca0012'};
+%data_list = {'naca4412'};
 
 
 %'ni8-2','l30703c-13-3'
@@ -23,14 +28,49 @@ for i = 1:data_len
     y=y(2:end-1,2);
 
     [xs ys] = splinefit([1;x;1],[0;y;0],0);
-    if strcmp(data_list{i},'h6')
-        plot(xs,ys,'r','linewidth',1);
-    elseif strcmp(data_list{i},'naca4412')
+    
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    [~,le] = min(xs); %Leading edge index
+
+    xs_u = xs(1:le); %Upper surface x
+    xs_l = xs(le+1:end); %Lower surface x
+    ys_u = ys(1:le); %Upper surface y
+    ys_l = ys(le+1:end); %Lower surface y
+
+    n = 100;
+    delta_x = 0.0002;
+    camber_x = zeros(1,n+1);
+    camber_y = zeros(1,n+1);
+
+    for j = 0:n
+       try
+           camber_x(j+1)=j/n;
+           upper_index = find(xs_u<(j/n+delta_x) & xs_u>(j/n-delta_x));
+           lower_index = find(xs_l<(j/n+delta_x) & xs_l>(j/n-delta_x));
+           camber_y(j+1) = (ys_u(upper_index(1)) + ys_l(lower_index(1)))/2;
+       catch exception
+           if j~=0
+               camber_y(j+1)=camber_y(j);
+           else
+               camber_y(1) = ys_u(le);
+           end
+       end
+    end
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    
+    if strcmp(data_list{i},'naca001200')
+        plot(xs,ys,'r','linewidth',1.5);
+        plot(camber_x,camber_y,'r')
+    elseif strcmp(data_list{i},'naca441200')
         plot(xs,ys,'b','linewidth',1.5);
+        plot(camber_x,camber_y,'b')
     else
         plot(xs,ys,'k','linewidth',1);
+        plot(camber_x,camber_y,'k')
     end
 end
+
 %legend(data_list,'location','southeast')
 hold off
 set(gca,'XTick',[], 'YTick', []) %Remove axes numbers

@@ -102,6 +102,7 @@ for nalpha = 1:length(alpha)
 %    boundary layer solver
   [ilnt ills iltr ilts delstarl thetal] = bl_solv ( sl, cpl );
 
+
 %    lift and drag coefficients
   [Cl Cd] = forces ( circ, cp, delstarl, thetal, delstaru, thetau );
 
