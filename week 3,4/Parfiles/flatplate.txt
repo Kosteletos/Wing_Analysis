@@ -1,4 +1,0 @@
-Section identifier              : flatplate
-Number of panels                : 800
-Reynolds number                 : 0.5e6
-Range of incidences (degrees)   : -4:0.04:4

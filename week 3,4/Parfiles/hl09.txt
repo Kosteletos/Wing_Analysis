@@ -1,4 +1,0 @@
-Section identifier              : hl09
-Number of panels                : 800
-Reynolds number                 : 20e6
-Range of incidences (degrees)   : 0:0.25:10
